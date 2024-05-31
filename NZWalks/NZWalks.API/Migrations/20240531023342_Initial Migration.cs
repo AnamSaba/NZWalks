@@ -20,7 +20,7 @@ namespace NZWalks.API.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Area = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lat = table.Column<double>(type: "float", nullable: false),
-                    Lang = table.Column<double>(type: "float", nullable: false),
+                    Long = table.Column<double>(type: "float", nullable: false),
                     Population = table.Column<long>(type: "bigint", nullable: false),
                     RegionImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -34,7 +34,7 @@ namespace NZWalks.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
