@@ -11,7 +11,7 @@
         public long Population { get; set; }
         public string? RegionImageUrl { get; set; }
 
-        //Navigation Properties
-        public IEnumerable<Walk> Walks { get; set; }
+        /*//Navigation Properties
+        public IEnumerable<Walk> Walks { get; set; }*/
     }
 }
