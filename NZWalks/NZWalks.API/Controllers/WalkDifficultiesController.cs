@@ -55,10 +55,11 @@ namespace NZWalks.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddWalkDifficultyDto addWalkDifficultyDto)
         {
-            if (!(ValidateAddWalkDifficulty(addWalkDifficultyDto)))
+            // Commented as we used Fluent Validation for model
+            /*if (!(ValidateAddWalkDifficulty(addWalkDifficultyDto)))
             {
                 return BadRequest(ModelState);
-            }
+            }*/
             var walkDifficultyDomain = mapper.Map<WalkDifficulty>(addWalkDifficultyDto);
 
             walkDifficultyDomain = await walkDifficultyRepository.CreateAsync(walkDifficultyDomain);
@@ -73,10 +74,11 @@ namespace NZWalks.API.Controllers
 
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateWalkDifficultyDto updateWalkDifficultyDto)
         {
-            if (!(ValidateUpdateWalkDifficulty(updateWalkDifficultyDto)))
-            {
-                return BadRequest(ModelState);
-            }
+            // Commented as we used Fluent Validation for model
+            /* if (!(ValidateUpdateWalkDifficulty(updateWalkDifficultyDto)))
+             {
+                 return BadRequest(ModelState);
+             }*/
             var walkDifficultyDomain = mapper.Map<WalkDifficulty>(updateWalkDifficultyDto);
 
             walkDifficultyDomain = await walkDifficultyRepository.UpdateAsync(id, walkDifficultyDomain);

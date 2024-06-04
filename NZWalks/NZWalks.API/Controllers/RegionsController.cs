@@ -68,10 +68,12 @@ namespace NZWalks.API.Controllers
       
         public async Task<IActionResult> Create([FromBody] AddRegionDto addRegionDto)
         {
-            if(!ValidateAddRegion(addRegionDto))
+
+            // Commented as we used Fluent Validation for model
+            /*if(!ValidateAddRegion(addRegionDto))
             {
                 return BadRequest(ModelState);
-            }
+            }*/
 
             var regionDomain = mapper.Map<Region>(addRegionDto);
 
@@ -109,10 +111,11 @@ namespace NZWalks.API.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionDto updateRegionDto)
         {
-            if (!ValidateUpdateRegion(updateRegionDto))
-            {
-                return BadRequest(ModelState);
-            }
+            // Commented as we used Fluent Validation for model
+            /* if (!ValidateUpdateRegion(updateRegionDto))
+             {
+                 return BadRequest(ModelState);
+             }*/
 
             var regionDomain = mapper.Map<Region>(updateRegionDto);
             regionDomain = await regionRepository.UpdateAsync(id, regionDomain);

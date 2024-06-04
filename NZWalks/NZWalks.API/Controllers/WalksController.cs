@@ -119,21 +119,22 @@ namespace NZWalks.API.Controllers
 
         private async Task<bool> ValidateAddWalk(AddWalkDto addWalkDto)
         {
-            if (addWalkDto == null)
-            {
-                ModelState.AddModelError(nameof(addWalkDto), $"{nameof(addWalkDto)} cannot be empty.");
-                return false;
-            }
+            // Commented as we used Fluent Validation for below validations
+            /* if (addWalkDto == null)
+             {
+                 ModelState.AddModelError(nameof(addWalkDto), $"{nameof(addWalkDto)} cannot be empty.");
+                 return false;
+             }
 
-            if (string.IsNullOrWhiteSpace(addWalkDto.Name))
-            {
-                ModelState.AddModelError(nameof(addWalkDto.Name), $"{nameof(addWalkDto.Name)} cannot be empty or white space.");
-            }
+             if (string.IsNullOrWhiteSpace(addWalkDto.Name))
+             {
+                 ModelState.AddModelError(nameof(addWalkDto.Name), $"{nameof(addWalkDto.Name)} cannot be empty or white space.");
+             }
 
-            if (addWalkDto.Length < 0)
-            {
-                ModelState.AddModelError(nameof(addWalkDto.Length), $"{nameof(addWalkDto.Length)} cannot be less than zero.");
-            }
+             if (addWalkDto.Length < 0)
+             {
+                 ModelState.AddModelError(nameof(addWalkDto.Length), $"{nameof(addWalkDto.Length)} cannot be less than zero.");
+             }*/
 
             var region = await regionRepository.GetByIdAsync(addWalkDto.RegionId);
 
@@ -160,21 +161,22 @@ namespace NZWalks.API.Controllers
 
         private async Task<bool> ValidateUpdateWalk(UpdateWalkDto updateWalkDto)
         {
-            if (updateWalkDto == null)
-            {
-                ModelState.AddModelError(nameof(updateWalkDto), $"{nameof(updateWalkDto)} cannot be empty.");
-                return false;
-            }
+            // Commented as we used Fluent Validation for below validations
+            /* if (updateWalkDto == null)
+             {
+                 ModelState.AddModelError(nameof(updateWalkDto), $"{nameof(updateWalkDto)} cannot be empty.");
+                 return false;
+             }
 
-            if (string.IsNullOrWhiteSpace(updateWalkDto.Name))
-            {
-                ModelState.AddModelError(nameof(updateWalkDto.Name), $"{nameof(updateWalkDto.Name)} cannot be empty or white space.");
-            }
+             if (string.IsNullOrWhiteSpace(updateWalkDto.Name))
+             {
+                 ModelState.AddModelError(nameof(updateWalkDto.Name), $"{nameof(updateWalkDto.Name)} cannot be empty or white space.");
+             }
 
-            if (updateWalkDto.Length < 0)
-            {
-                ModelState.AddModelError(nameof(updateWalkDto.Length), $"{nameof(updateWalkDto.Length)} cannot be less than zero.");
-            }
+             if (updateWalkDto.Length < 0)
+             {
+                 ModelState.AddModelError(nameof(updateWalkDto.Length), $"{nameof(updateWalkDto.Length)} cannot be less than zero.");
+             }*/
 
             var region = await regionRepository.GetByIdAsync(updateWalkDto.RegionId);
 
