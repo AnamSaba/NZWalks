@@ -2,7 +2,7 @@
 
 namespace NZWalks.API.Repositories
 {
-    public interface ITokenHandler
+    public interface ITokenHandlerStaticUser
     {
         Task<string> CreateTokenAsync(StaticUser user);
     }

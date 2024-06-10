@@ -25,7 +25,7 @@ namespace NZWalks.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "reader")]
+        [Authorize(Roles = "Reader,Writer")]
         public async Task<IActionResult> GetAll()
         {
             var walkDifficultyDomain = await walkDifficultyRepository.GetAllAsync();
@@ -37,7 +37,7 @@ namespace NZWalks.API.Controllers
 
         [HttpGet]
         [Route("{id:guid}")]
-        [Authorize(Roles = "reader")]
+        [Authorize(Roles = "Reader,Writer")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var walkDifficultyDomain = await walkDifficultyRepository.GetByIdAsync(id);
@@ -54,7 +54,7 @@ namespace NZWalks.API.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "writer")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] AddWalkDifficultyDto addWalkDifficultyDto)
         {
             // Commented as we used Fluent Validation for model
@@ -73,7 +73,7 @@ namespace NZWalks.API.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        [Authorize(Roles = "writer")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateWalkDifficultyDto updateWalkDifficultyDto)
         {
             // Commented as we used Fluent Validation for model
@@ -97,7 +97,7 @@ namespace NZWalks.API.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
-        [Authorize(Roles = "writer")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var walkDifficultyDomain = await walkDifficultyRepository.DeleteAsync(id);

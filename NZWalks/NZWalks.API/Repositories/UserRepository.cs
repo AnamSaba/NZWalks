@@ -11,13 +11,13 @@ namespace NZWalks.API.Repositories
             {
                 FirstName = "Read Only", LastName = "User", EmailAddress = "readonly@user.com",
                 Id = Guid.NewGuid(), Username = "readonly@user.com", Password = "Readonly@user",
-                Roles = new List<string> {"reader"}
+                Roles = new List<string> {"Reader"}
             },
             new StaticUser()
             {
                 FirstName = "Read Write", LastName = "User", EmailAddress = "readwrite@user.com",
                 Id = Guid.NewGuid(), Username = "readwrite@user.com", Password = "Readwrite@user",
-                Roles = new List<string> {"reader", "writer"}
+                Roles = new List<string> {"Reader", "Writer"}
             }
         };
         public async Task<StaticUser> AuthenticateAsync(string username, string password)

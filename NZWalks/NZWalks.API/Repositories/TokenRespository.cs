@@ -1,32 +1,30 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using NZWalks.API.Models.Domain;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
 namespace NZWalks.API.Repositories
 {
-    public class TokenHandler : ITokenHandler
+    public class TokenRespository : ITokenRepository
     {
         private readonly IConfiguration configuration;
 
-        public TokenHandler(IConfiguration configuration)
+        public TokenRespository(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
-        public Task<string> CreateTokenAsync(StaticUser user)
+        public string CreateJWTToken(IdentityUser user, List<string> roles)
         {
             // Create a claims
 
             var claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.GivenName, user.FirstName));
-            claims.Add(new Claim(ClaimTypes.Surname, user.LastName));
-            claims.Add(new Claim(ClaimTypes.Email, user.EmailAddress));
-            
+            claims.Add(new Claim(ClaimTypes.Email, user.Email));
+
             //Loop into roles of users 
 
-            foreach (var role in user.Roles)
+            foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
@@ -46,8 +44,7 @@ namespace NZWalks.API.Repositories
                 expires: DateTime.Now.AddMinutes(15),
                 signingCredentials: credentials);
 
-            return Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token));
-
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

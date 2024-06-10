@@ -9,10 +9,10 @@ namespace NZWalks.API.Controllers
     public class StaticUserAuthController : Controller
     {
         private readonly IUserRepository userRepository;
-        private readonly ITokenHandler tokenHandler;
+        private readonly ITokenHandlerStaticUser tokenHandler;
 
         public StaticUserAuthController(IUserRepository userRepository,
-            ITokenHandler tokenHandler)
+            ITokenHandlerStaticUser tokenHandler)
         {
             this.userRepository = userRepository;
             this.tokenHandler = tokenHandler;
