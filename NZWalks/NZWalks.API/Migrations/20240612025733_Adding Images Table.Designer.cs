@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NZWalks.API.Data;
 
@@ -11,9 +12,11 @@ using NZWalks.API.Data;
 namespace NZWalks.API.Migrations
 {
     [DbContext(typeof(NZWalksDbContext))]
-    partial class NZWalksDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240612025733_Adding Images Table")]
+    partial class AddingImagesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,50 +86,6 @@ namespace NZWalks.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Regions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("7391432f-c164-4e3e-9873-b2c57389d773"),
-                            Area = 4894.0,
-                            Code = "AKL",
-                            Lat = -36.525320700000002,
-                            Long = 173.77857040000001,
-                            Name = "Auckland",
-                            Population = 1718982L,
-                            RegionImageUrl = "https://images.pexels.com/photos/5169056/pexels-photo-5169056.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        },
-                        new
-                        {
-                            Id = new Guid("79e9872d-5a2f-413e-ac36-511036ccd3d4"),
-                            Area = 8970.0,
-                            Code = "WAIK",
-                            Lat = -37.514458400000002,
-                            Long = 174.54051279999999,
-                            Name = "Waikato",
-                            Population = 496700L
-                        },
-                        new
-                        {
-                            Id = new Guid("68c2ab66-c5eb-40b6-81e0-954456d06bba"),
-                            Area = 12230.0,
-                            Code = "BAYP",
-                            Lat = -37.532825899999999,
-                            Long = 175.7642701,
-                            Name = "Bay Of Plenty",
-                            Population = 345400L
-                        },
-                        new
-                        {
-                            Id = new Guid("cfa06ed2-bf65-4b65-93ed-c9d286ddb0de"),
-                            Area = 5230.0,
-                            Code = "WGN",
-                            Lat = -37.531625900000002,
-                            Long = 178.76423410000001,
-                            Name = "Wellington",
-                            Population = 134400L,
-                            RegionImageUrl = "https://images.pexels.com/photos/4350631/pexels-photo-4350631.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        });
                 });
 
             modelBuilder.Entity("NZWalks.API.Models.Domain.Walk", b =>
@@ -170,23 +129,6 @@ namespace NZWalks.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WalkDifficulty");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("fe140afa-4217-46e0-b65f-7e76f64ee2e3"),
-                            Code = "Easy"
-                        },
-                        new
-                        {
-                            Id = new Guid("07a52212-552c-4e30-8000-d118a78e5ac7"),
-                            Code = "Medium"
-                        },
-                        new
-                        {
-                            Id = new Guid("a4cfcd9e-ccf8-4f3f-82ea-4f37c2de3368"),
-                            Code = "Hard"
-                        });
                 });
 
             modelBuilder.Entity("NZWalks.API.Models.Domain.Walk", b =>
