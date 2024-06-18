@@ -1,8 +1,12 @@
-﻿namespace NZWalks.API.Models.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NZWalks.API.Models.DTO
 {
     public class AddRegionDto
     {
-        public string Code { get; set; }
+		[MinLength(3, ErrorMessage = "Code has to be minimum of 3 characters.")]
+		[MaxLength(3, ErrorMessage = "Code has to be maximum of 3 characters.")]
+		public string Code { get; set; }
         public string Name { get; set; }
         public double Area { get; set; }
         public double Lat { get; set; }
