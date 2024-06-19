@@ -29,12 +29,16 @@ namespace NZWalks.API.Controllers
             this.regionRepository = regionRepository;
             this.walkDifficultyRepository = walkDifficultyRepository;
         }
+		//GET : https://localhost:7046/api/Walks/filetrOn=Name&filterQuery=Track&sortBy=Name&isAscending=false&pageNumber=1&pageSize=10
 
         [HttpGet]
         [Authorize(Roles = "Reader,Writer")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filetQuery,
+            [FromQuery] string? sortBy, [FromQuery] bool? isAscending,
+            [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000)
         {
-            var walkDomain = await walkRepository.GetAllAsync();
+            var walkDomain = await walkRepository.GetAllAsync(filterOn,filetQuery,sortBy,isAscending ?? true,
+                pageNumber, pageSize);
 
             var walkDto = mapper.Map<List<WalkDto>>(walkDomain);
 
